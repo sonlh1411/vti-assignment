@@ -62,6 +62,11 @@ module "s3" {
   project_name = "static-website"
 }
 
+module "ecr" {
+  source       = "./_modules/ecr"
+  project_name = "final-asignment"
+}
+
 module "rds" {
   depends_on = [
     module.vpc
