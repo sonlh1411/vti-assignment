@@ -3,8 +3,8 @@ name: Backend CI
 on:
   push:
     branches: [ main ]
-    paths:
-      - applications/backend/**
+    # paths:
+    #   - applications/backend/**
   pull_request:
     branches: [ main ]
 
