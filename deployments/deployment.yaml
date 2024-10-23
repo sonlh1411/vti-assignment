@@ -15,14 +15,14 @@ spec:
     spec:
       containers:
       - name: backend
-        image: 123456789012.dkr.ecr.us-east-1.amazonaws.com/aws-infra-project-app-repo:abcdef123456
+        image: 084375555299.dkr.ecr.us-east-1.amazonaws.com/final-asignment-app-repo:latest
         ports:
         - containerPort: 80
         env:
         - name: DB_HOST
-          value: <RDS_ENDPOINT>
+          value: "identifier-db.cfwoy6guyqmd.us-east-1.rds.amazonaws.com"
         - name: DB_NAME
-          value: "mydb"
+          value: "db_name"
         - name: AWS_REGION
           value: "us-east-1"
         resources:

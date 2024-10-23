@@ -1,9 +1,6 @@
 import os
-from dotenv import load_dotenv
 import boto3
 import psycopg2
-
-load_dotenv()
 
 def get_ssm_parameter(name):
     ssm = boto3.client('ssm', region_name=os.getenv('AWS_REGION', 'us-east-1'))
