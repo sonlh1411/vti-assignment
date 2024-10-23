@@ -1,9 +1,9 @@
-# .github/workflows/frontend-ci.yml
 name: Frontend CI
-
 on:
   push:
     branches: [ main ]
+    paths:
+      - applications/frontend/**
   pull_request:
     branches: [ main ]
 

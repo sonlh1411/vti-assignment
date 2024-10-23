@@ -3,6 +3,8 @@ name: Backend CI
 on:
   push:
     branches: [ main ]
+    paths:
+      - applications/backend/**
   pull_request:
     branches: [ main ]
 
@@ -36,3 +38,4 @@ jobs:
           docker build -t $ECR_REPOSITORY:latest applications/backend/
           docker tag $ECR_REPOSITORY:latest $ECR_REGISTRY/$ECR_REPOSITORY:${IMAGE_TAG}
           docker push $ECR_REGISTRY/$ECR_REPOSITORY:${IMAGE_TAG}
+          docker push $ECR_REGISTRY/$ECR_REPOSITORY:latest

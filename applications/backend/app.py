@@ -13,7 +13,7 @@ def get_ssm_parameter(name):
 def main():
     username = get_ssm_parameter('/rds/db/identifier-db/superuser/username')
     password = get_ssm_parameter('/rds/db/identifier-db/superuser/password')
-    db_host = os.getenv('DB_HOST')  # Obtain from environment or Terraform outputs
+    db_host = os.getenv('DB_HOST') 
     db_name = os.getenv('DB_NAME', 'db_name')
 
     conn = psycopg2.connect(
