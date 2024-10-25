@@ -53,4 +53,4 @@ jobs:
           sed -i "s|__DB_HOST__|${{ secrets.DB_HOST }}|g" deployments/deployment.yaml
           sed -i "s|__DB_NAME__|${{ secrets.DB_NAME }}|g" deployments/deployment.yaml
           sed -i "s|__AWS_REGION__|${{ secrets.AWS_REGION }}|g" deployments/deployment.yaml
-          cat deployments/deployment.yaml
+          kubectl apply -f deployments/deployment.yaml
