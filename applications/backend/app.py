@@ -36,8 +36,8 @@ def main():
     conn.close()
 
 def get_db_credentials():
-    username = get_ssm_parameter('/rds/db/identifier-db/superuser/username')
-    password = get_ssm_parameter('/rds/db/identifier-db/superuser/password')
+    username = get_ssm_parameter('/rds/db/sonlh-db/superuser/username')
+    password = get_ssm_parameter('/rds/db/sonlh-db/superuser/password')
     return username, password
 
 @app.route('/info', methods=['GET'])
