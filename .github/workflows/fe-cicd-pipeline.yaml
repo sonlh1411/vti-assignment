@@ -6,6 +6,8 @@ on:
       - applications/frontend/**
   pull_request:
     branches: [ main ]
+    paths:
+      - applications/frontend/**
 
 jobs:
   deploy:
