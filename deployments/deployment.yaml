@@ -16,16 +16,17 @@ spec:
       serviceAccountName: ssm-service-account
       containers:
       - name: backend
-        image: 084375555299.dkr.ecr.us-east-1.amazonaws.com/final-asignment-app-repo:latest
+        # image: 084375555299.dkr.ecr.us-east-1.amazonaws.com/final-asignment-app-repo:latest
+        image: __IMAGE__
         ports:
         - containerPort: 80
         env:
         - name: DB_HOST
-          value: "identifier-db.cfwoy6guyqmd.us-east-1.rds.amazonaws.com"
+          value: __DB_HOST__
         - name: DB_NAME
-          value: "db_name"
+          value: __DB_NAME__
         - name: AWS_REGION
-          value: "us-east-1"
+          value: __AWS_REGION__
         resources:
           requests:
             memory: "64Mi"

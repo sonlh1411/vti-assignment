@@ -28,7 +28,8 @@ resource "aws_s3_bucket_website_configuration" "static_website_config" {
 }
 
 resource "aws_s3_bucket_policy" "static_website_policy" {
-  bucket = aws_s3_bucket.static_website.id
+  depends_on = [aws_s3_bucket_public_access_block.public_access_block]
+  bucket     = aws_s3_bucket.static_website.id
 
   policy = jsonencode({
     Version = "2012-10-17"

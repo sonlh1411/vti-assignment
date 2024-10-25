@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
-    bucket = "sonlh-tfstate"
+    bucket = "sonlh-tf-backend"
     key    = "tfstate"
-    region = "us-east-1"
+    region = "us-east-2"
   }
 }

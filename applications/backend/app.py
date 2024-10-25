@@ -7,7 +7,7 @@ from psycopg2 import sql
 app = Flask(__name__)
 
 def get_ssm_parameter(name):
-    ssm = boto3.client('ssm', region_name=os.getenv('AWS_REGION', 'us-east-1'))
+    ssm = boto3.client('ssm', region_name=os.getenv('AWS_REGION', 'us-east-2'))
     response = ssm.get_parameter(Name=name, WithDecryption=True)
     return response['Parameter']['Value']
 
@@ -46,7 +46,7 @@ def info():
         # Retrieve environment variables
         db_host = os.getenv('DB_HOST') 
         db_name = os.getenv('DB_NAME', 'db_name')
-        aws_region = os.getenv('AWS_REGION', 'us-east-1')
+        aws_region = os.getenv('AWS_REGION', 'us-east-2')
         
         # Get DB credentials
         db_username, db_password = get_db_credentials()

@@ -15,6 +15,11 @@ resource "random_string" "random" {
   override_special = "!#$&*()-=+[]{}<>:?"
 }
 
+module "s3" {
+  source       = "./_modules/s3"
+  project_name = var.project_name
+}
+
 module "vpc" {
   source                                 = "./_modules/network"
   vpc_cidr                               = var.cidrvpc
@@ -57,14 +62,9 @@ module "eks" {
   default_tags                                   = var.default_tags
 }
 
-module "s3" {
-  source       = "./_modules/s3"
-  project_name = "static-website"
-}
-
 module "ecr" {
   source       = "./_modules/ecr"
-  project_name = "final-asignment"
+  project_name = var.project_name
 }
 
 module "rds" {
@@ -73,31 +73,29 @@ module "rds" {
   ]
   source                           = "./_modules/rds"
   vpc_id                           = module.vpc.vpc_id
-  allocated_storage                = 20
-  max_allocated_storage            = 20
-  apply_immediately                = true
-  skip_final_snapshot              = true
+  allocated_storage                = var.rds_config.allocated_storage
+  max_allocated_storage            = var.rds_config.max_allocated_storage
+  apply_immediately                = var.rds_config.apply_immediately
+  skip_final_snapshot              = var.rds_config.skip_final_snapshot
   db_subnet_group_name             = module.vpc.vpc_db_subnet_group_name
-  availability_zone                = 3
-  backup_retention_period          = 7
-  cidr_allow                       = "0.0.0.0/0"
-  username                         = "sonlh"
+  availability_zone                = var.rds_config.availability_zone
+  backup_retention_period          = var.rds_config.backup_retention_period
+  cidr_allow                       = var.rds_config.cidr_allow
+  username                         = var.rds_config.username
   rd_pwd_postgre                   = random_string.random
-  identifier_db                    = "identifier-db"
-  db_name                          = "db_name"
-  enginedb                         = "postgres"
-  engine_version                   = "16.3"
-  instance_class                   = "db.t3.micro"
-  db_port                          = 5432
-  storage_type                     = "gp2"
-  publicly_accessible              = true
-  parameter_group_family           = "postgres16"
-  parameter_group_name_description = "PostgreSQL Parameter Group"
-  multi_az                         = true
-  monitoring_interval              = 1
-  iam_monitoring_interval_rds_arn  = ""
+  identifier_db                    = var.rds_config.identifier_db
+  db_name                          = var.rds_config.db_name
+  enginedb                         = var.rds_config.enginedb
+  engine_version                   = var.rds_config.engine_version
+  instance_class                   = var.rds_config.instance_class
+  db_port                          = var.rds_config.db_port
+  storage_type                     = var.rds_config.storage_type
+  publicly_accessible              = var.rds_config.publicly_accessible
+  parameter_group_family           = var.rds_config.parameter_group_family
+  parameter_group_name_description = var.rds_config.parameter_group_name_description
+  multi_az                         = var.rds_config.multi_az
+  storage_credential_to_ssm        = var.rds_config.storage_credential_to_ssm
   tags = merge(
     var.default_tags
   )
-  storage_credential_to_ssm = true
 }

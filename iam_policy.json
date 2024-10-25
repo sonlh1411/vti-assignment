@@ -208,7 +208,7 @@
     {
       "Effect": "Allow",
       "Action": ["ssm:GetParameter", "ssm:GetParameters", "ssm:GetParameterHistory", "ssm:GetParametersByPath"],
-      "Resource": "arn:aws:ssm:us-east-1:084375555299:parameter/*"
+      "Resource": "arn:aws:ssm:us-east-2:084375555299:parameter/*"
     },
     {
       "Effect": "Allow",
@@ -218,7 +218,7 @@
     {
       "Effect": "Allow",
       "Action": ["ecr:GetDownloadUrlForLayer", "ecr:BatchGetImage", "ecr:BatchCheckLayerAvailability"],
-      "Resource": "arn:aws:ecr:us-east-1:084375555299:repository/*"
+      "Resource": "arn:aws:ecr:us-east-2:084375555299:repository/*"
     }
   ]
 }

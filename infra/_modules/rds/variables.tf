@@ -56,11 +56,6 @@ variable "multi_az" {
 variable "apply_immediately" {
 }
 
-variable "monitoring_interval" {
-}
-variable "iam_monitoring_interval_rds_arn" {
-
-}
 variable "backup_retention_period" {
 
 }
